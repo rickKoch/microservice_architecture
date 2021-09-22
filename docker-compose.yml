@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  user:
+    build:
+      context: ./node_services
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./node_services/user:/app/user
+      - ./node_services/common:/app/common
+    ports:
+      - "3000:$PORT"
+    env_file:
+      - .env
+    depends_on:
+      - "database"
+    command: "npm run user:dev"
+
+  database:
+    image: mongo
+    container_name: "mongo"
+    env_file:
+      - .env
+    volumes:
+      - ./mongo-volume:/data/db
+    ports:
+      - "27017:27017"
+
+  # test2:
+    # build:
+      # context: ./test2
+      # dockerfile: Dockerfile
+    # volumes:
+      # - ./test2/src:/app/src
+    # ports:
+      # - "3001:$PORT"
+    # env_file:
+      # - .env
+    # environment:
+      # TEST_1_ENDPOINT: "http://test1:3000"
+

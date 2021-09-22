@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": { "ecmaVersion": 2020, "sourceType": "module" },
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "quotes": ["error", "double"],
+    "indent": ["error", "tab"],
+    "@typescript-eslint/typedef": ["error", {
+      "memberVariableDeclaration": true,
+      "propertyDeclaration": true,
+      "variableDeclaration": true,
+      "variableDeclarationIgnoreFunction": true,
+      "arrowParameter": false
+    }],
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/semi": ["error", "always"],
+    "@typescript-eslint/no-empty-function": ["error", { "allow": ["constructors"] }]
+  }
+}

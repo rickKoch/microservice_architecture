@@ -1,0 +1,30 @@
+{
+	"compilerOptions": {
+		"target": "ES2020",
+		"module": "commonjs",
+		"outDir": "./build",
+		"rootDirs": ["./src"],
+		"noImplicitAny": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"types": ["node", "reflect-metadata"],
+		"baseUrl": "./",
+		"paths": {
+			"@common/*": ["common/*"]
+		},
+		"alwaysStrict": true,
+		"strict": true,
+		"strictPropertyInitialization": false,
+		"allowJs": false,
+		"moduleResolution": "node",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"removeComments": true,
+		"sourceMap": true,
+		"resolveJsonModule": true
+	},
+	"lib": ["ES2020"],
+	"include": ["common/**/**", "user/src/**/*"],
+	"exclude": ["node_modules"]
+}

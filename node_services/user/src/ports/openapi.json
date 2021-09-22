@@ -1,0 +1,104 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "The Title of your project",
+		"description": "A description of your project",
+		"license": {
+			"name": "MIT",
+			"url": "https://opensource.org/licenses/MIT"
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	],
+	"tags": [
+		{
+			"name": "Users",
+			"description": "API for the Users"
+		}
+	],
+	"consumes": ["application/json"],
+	"produces": ["application/json"],
+	"paths": {
+		"/account": {
+			"post": {
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"tags": ["Users"],
+				"summary": "Create new user",
+				"requestBody": {
+					"description": "Create User object",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/definitions/CreateUser"
+							}
+						}
+					}
+				},
+				"produces": ["application/json"],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/ApiResponse"
+						}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"CreateUser": {
+			"type": "object",
+			"required": ["firstName", "lastName", "email", "password"],
+			"properties": {
+				"firstName": {
+					"type": "string",
+					"description": "First Name"
+				},
+				"lastName": {
+					"type": "string",
+					"description": "Last Name"
+				},
+				"email": {
+					"type": "string",
+					"description": "Email"
+				},
+				"password": {
+					"type": "string",
+					"description": "Password"
+				}
+			}
+		},
+		"ApiResponse": {
+			"type": "object",
+			"properties": {
+				"code": {
+					"type": "integer",
+					"format": "int64",
+					"description": "Response code"
+				},
+				"message": {
+					"type": "string",
+					"description": "Response message"
+				},
+				"timestamp": {
+					"type": "integer",
+					"format": "int64",
+					"description": "Response timestamp"
+				},
+				"data": {
+					"type": "object"
+				}
+			}
+		}
+	}
+}
